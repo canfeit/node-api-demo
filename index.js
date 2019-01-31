@@ -6,13 +6,16 @@ const mime={
   '.png':'image/png',
   '.html':"text/html"
 }
+const notFound=(_, response) => {
+  response.end('notfound')
+}
 const handler = (request, response) => {
   const { headers, httpVersion, method, url } = request;
   const { pathname, searchParams } = new URL(url, "https://" + headers.host);
   console.log(searchParams.get("id"), searchParams.get("activate"));
   require('fs').readFile(join('.','public',pathname),'binary', (err, data) => {
     if (err) {
-     return routes[method][url](request,response)
+     return (routes[method][url]||notFound)(request,response)
     }
     console.log(extname(pathname))
     response.setHeader('content-type', mime[extname(pathname)]);
