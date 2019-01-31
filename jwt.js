@@ -1,5 +1,6 @@
 const crypto = require("crypto");
-exports.sign = function(data, secret) {
+const secret=process.env.node_secret||'demo';
+exports.sign = function(data) {
   const header = {
     alg: "HS256",
     typ: "JWT"
@@ -19,7 +20,7 @@ exports.sign = function(data, secret) {
   );
   return [securedInput, signature].join(".");
 };
-exports.verify = function(token, secret) {
+exports.verify = function(token) {
   const [encodedHeader, encodedPayload, signature] = token.split(".");
   const securedInput = `${encodedHeader}.${encodedPayload}`;
   return (
