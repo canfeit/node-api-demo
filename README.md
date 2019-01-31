@@ -5,7 +5,7 @@
 ## 架构
 
 - web 服务:[node http](https://nodejs.org/dist/latest-v11.x/docs/api/http.html)
-- 数据库:[MySQL](mysql.com)
+- 数据库:[MySQL](http://mysql.com)
 - 数据库驱动:[mysqljs](https://github.com/mysqljs/mysql)
 - 登陆认证:[jwt(node crypto)](https://nodejs.org/dist/latest-v11.x/docs/api/crypto.html)
 
